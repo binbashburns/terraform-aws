@@ -50,7 +50,7 @@ resource "aws_autoscaling_group" "rhel_asg" {
   max_size             = 6
   desired_capacity     = 2
   health_check_type    = "EC2"
-  vpc_zone_identifier  = [var.sub4_id]
+  vpc_zone_identifier  = [var.sub3_id,var.sub4_id]
   target_group_arns    = [var.alb_target_group_arn]
 
   lifecycle {

@@ -23,6 +23,12 @@ variable "sub2_id" {
 
 }
 
+variable "sub3_id" {
+  type        = string
+  description = "The ID of subnet 3, from the VPC Module"
+
+}
+
 variable "sub4_id" {
   type        = string
   description = "The ID of subnet 4, from the VPC Module"
@@ -44,5 +50,5 @@ variable "alb_target_group_arn" {
 }
 
 variable "key_name" {
-  description = "Imports name of Secrets Manager managed Key"
+  description = "Imports name of SecretsManager managed Key"
 }

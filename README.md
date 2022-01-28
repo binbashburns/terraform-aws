@@ -2,7 +2,7 @@
 This is a sample AWS build using Terraform!
 
 ## To do list:
-- Spread ASG instances across multiple availability zones
+<!--- Spread ASG instances across multiple availability zones-->
 - Add runtime output of URL to access Apache instance
 - Try to access the Apache Web Server with a browser
 - Ensure headers are uniform on all config files
