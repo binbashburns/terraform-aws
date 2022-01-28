@@ -2,7 +2,7 @@
 
 variable "base_name" {
   type        = string
-  default     = "tf_aws"
+  default     = "tf-aws"
   description = "The base name for all resources"
 }
 

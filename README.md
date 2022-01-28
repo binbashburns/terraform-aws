@@ -2,11 +2,14 @@
 This is a sample AWS build using Terraform!
 
 ## To do list:
-- Add S3 Bucket
 - Using the Random Provider, generate names of ASG Instances at runtime
-- Add KMS-managed key to manage standalone EC2 instance
+- Create key to access standalone EC2 instance, store in Secrets Manager
 - Spread ASG instances across multiple availability zones
+- Add runtime output of URL to access Apache instance
 - Try to access the Apache Web Server with a browser
+- Ensure headers are uniform on all config files
+- Update to Network Diagram
+- Add Network Diagram to Git repo
 
 ## Resources:
 - 1 VPC

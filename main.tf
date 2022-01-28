@@ -17,8 +17,14 @@ module "ec2" {
   alb_target_group_arn = module.vpc.alb_target_group_arn
 }
 
-# # Invokes S3 module
-# module "s3" {
-#   source      = "./modules/s3"
-#   base_name   = var.base_name
-# }
+# Invokes KMS module (Used to encrypt S3 bucket)
+module "kms" {
+  source = "./modules/kms"
+}
+
+# Invokes S3 module
+module "s3" {
+  source      = "./modules/s3"
+  base_name   = var.base_name
+  kms_key_arn = module.kms.kms_key_arn
+}
