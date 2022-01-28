@@ -8,7 +8,7 @@ This is a sample AWS build using Terraform!
 - Spread ASG instances across multiple availability zones
 - Try to access the Apache Web Server with a browser
 
-# Resources built:
+# Resources:
 - 1 VPC
 - 4 Subnets (Two private, two public)
 - 1 Standalone EC2 Instance (Public)
