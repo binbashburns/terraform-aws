@@ -2,7 +2,6 @@
 This is a sample AWS build using Terraform!
 
 ## To do list:
-- Using the Random Provider, generate names of ASG Instances at runtime
 - Create key to access standalone EC2 instance, store in Secrets Manager
 - Spread ASG instances across multiple availability zones
 - Add runtime output of URL to access Apache instance
@@ -10,6 +9,7 @@ This is a sample AWS build using Terraform!
 - Ensure headers are uniform on all config files
 - Update to Network Diagram
 - Add Network Diagram to Git repo
+- Add Resources to Resource List
 
 ## Resources:
 - 1 VPC
@@ -25,6 +25,7 @@ https://aws.amazon.com/architecture/reference-architecture-diagrams/
 https://courses.morethancertified.com/p/mtc-terraform
 https://courses.morethancertified.com/p/devops-in-the-cloud
 https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html
+https://github.com/rhythmictech/terraform-aws-secretsmanager-keypair
 https://lucid.app/lucidchart/
 https://medium.com/cognitoiq/terraform-and-aws-application-load-balancers-62a6f8592bcf
 https://registry.terraform.io/providers/hashicorp/aws/latest

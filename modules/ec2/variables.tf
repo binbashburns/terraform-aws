@@ -42,3 +42,7 @@ variable "pub_http_sg" {
 variable "alb_target_group_arn" {
   description = "Imports the ARN of the ALB Target Group from VPC"
 }
+
+variable "key_name" {
+  description = "Imports name of Secrets Manager managed Key"
+}

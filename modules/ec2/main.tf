@@ -7,8 +7,8 @@ resource "aws_instance" "rhel_ec2" {
   instance_type               = var.instance_type
   vpc_security_group_ids      = [var.pub_ssh_sg]
   associate_public_ip_address = true
-  #   key_name = var.key-pair
-    root_block_device {
+  key_name                    = var.key_name
+  root_block_device {
     volume_size = 20
   }
   tags = {
