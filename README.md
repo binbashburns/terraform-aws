@@ -1,14 +1,14 @@
-## terraform-aws
+# terraform-aws
 This is a sample AWS build using Terraform!
 
-# To do list:
+## To do list:
 - Add S3 Bucket
 - Using the Random Provider, generate names of ASG Instances at runtime
 - Add KMS-managed key to manage standalone EC2 instance
 - Spread ASG instances across multiple availability zones
 - Try to access the Apache Web Server with a browser
 
-# Resources:
+## Resources:
 - 1 VPC
 - 4 Subnets (Two private, two public)
 - 1 Standalone EC2 Instance (Public)
@@ -17,7 +17,7 @@ This is a sample AWS build using Terraform!
 - 2 Security Groups
 - 1 S3 Bucket
 
-# References used:
+## References used:
 https://aws.amazon.com/architecture/reference-architecture-diagrams/
 https://courses.morethancertified.com/p/mtc-terraform
 https://courses.morethancertified.com/p/devops-in-the-cloud
