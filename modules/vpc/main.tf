@@ -50,13 +50,97 @@ resource "aws_subnet" "sub4" {
   }
 }
 
-### --- INTERNET GATEWAY --- ###
+### --- PUBLIC ROUTING --- ###
 
+# Provides Elastic IP assigned to Internet Gateway
+resource "aws_eip" "igw_eip" {
+  vpc = true
+  tags = {
+    Name = "${var.base_name}_igw_eip"
+  }
+}
+
+# Provides Internet Gateway for VPC
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
+
   tags = {
-    Name = "internet_gateway"
+    Name = "${var.base_name}_igw"
   }
+}
+
+# Provides Route Table for Public Subnets (Subnet 1 and Subnet 2)
+resource "aws_route_table" "pub_rt" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "${var.base_name}_pub_rt"
+  }
+}
+
+# Associates Subnet 1 with the Public Route Table
+resource "aws_route_table_association" "pub_sub1_rta" {
+  subnet_id      = aws_subnet.sub1.id
+  route_table_id = aws_route_table.pub_rt.id
+}
+
+# Associates Subnet 2 with the Public Route Table
+resource "aws_route_table_association" "pub_sub2_rta" {
+  subnet_id      = aws_subnet.sub2.id
+  route_table_id = aws_route_table.pub_rt.id
+}
+
+### --- PRIVATE ROUTING --- ###
+
+# Provides Elastic IP for NAT Gateway
+resource "aws_eip" "ngw_eip" {
+  vpc = true
+
+  tags = {
+    Name = "${var.base_name}_ngw_eip"
+  }
+}
+
+# Provides NAT Gateway
+resource "aws_nat_gateway" "ngw" {
+  allocation_id = aws_eip.ngw_eip.id
+  subnet_id     = aws_subnet.sub2.id
+  depends_on    = [aws_internet_gateway.igw]
+
+  tags = {
+    Name = "${var.base_name}_ngw"
+  }
+}
+
+# Provides Route Table for Private Subnets (Subnet 3 and Subnet 4)
+resource "aws_route_table" "pri_rt" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.ngw.id
+  }
+
+  tags = {
+    Name = "${var.base_name}_pri_rt"
+  }
+}
+
+# Associates Subnet 3 with the Private Route Table
+resource "aws_route_table_association" "pri_sub3_rta" {
+  subnet_id      = aws_subnet.sub3.id
+  route_table_id = aws_route_table.pri_rt.id
+}
+
+# Associates Subnet 4 with the Private Route Table
+resource "aws_route_table_association" "pri_sub4_rta" {
+  subnet_id      = aws_subnet.sub4.id
+  route_table_id = aws_route_table.pri_rt.id
 }
 
 ### --- SECURITY GROUPS --- ###
@@ -85,7 +169,7 @@ resource "aws_security_group" "pub_ssh_sg" {
   }
 
   tags = {
-    Name = "Public_SSH_Access_SG"
+    Name = "public_ssh_access_sg"
   }
 }
 
@@ -113,7 +197,7 @@ resource "aws_security_group" "pub_http_sg" {
   }
 
   tags = {
-    Name = "Public_HTTP_Access_SG"
+    Name = "public_http_access_sg"
   }
 }
 
@@ -140,7 +224,7 @@ resource "aws_security_group" "pri_http_sg" {
   }
 
   tags = {
-    Name = "Private_HTTP_Access_SG"
+    Name = "private_http_access_sg"
   }
 }
 

@@ -19,9 +19,9 @@ resource "aws_instance" "rhel_ec2" {
 
 # Provides RHEL Launch Configuration, which will be used in the Auto Scaling Group
 resource "aws_launch_configuration" "rhel_lc" {
-  name          = "${var.base_name}_rhel_lc"
-  image_id      = var.ami
-  instance_type = "t2.micro"
+  name            = "${var.base_name}_rhel_lc"
+  image_id        = var.ami
+  instance_type   = "t2.micro"
   security_groups = [var.pub_http_sg]
 
   root_block_device {
@@ -49,10 +49,10 @@ resource "aws_autoscaling_group" "rhel_asg" {
   launch_configuration = aws_launch_configuration.rhel_lc.name
   min_size             = 2
   max_size             = 6
-  desired_capacity = 2
-  health_check_type = "EC2"
-  vpc_zone_identifier = [var.sub4_id]
-  target_group_arns = [var.alb_target_group_arn]
+  desired_capacity     = 2
+  health_check_type    = "EC2"
+  vpc_zone_identifier  = [var.sub4_id]
+  target_group_arns    = [var.alb_target_group_arn]
 
   lifecycle {
     create_before_destroy = true

@@ -1,10 +1,7 @@
-# terraform-aws
+## terraform-aws
 This is a sample AWS build using Terraform!
 
 # To do list:
-- Add Route Tables
-- Add Route Associations
-- Add NAT Gateway
 - Add S3 Bucket
 - Using the Random Provider, generate names of ASG Instances at runtime
 - Add KMS-managed key to manage standalone EC2 instance
