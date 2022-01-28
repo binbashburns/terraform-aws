@@ -2,7 +2,6 @@
 This is a sample AWS build using Terraform!
 
 ## To do list:
-- Create key to access standalone EC2 instance, store in Secrets Manager
 - Spread ASG instances across multiple availability zones
 - Add runtime output of URL to access Apache instance
 - Try to access the Apache Web Server with a browser
