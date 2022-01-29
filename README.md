@@ -1,8 +1,8 @@
 # Terraform AWS Demo
 ## About
-This is a sample AWS build using Terraform! 
-The final product is a Virtual Private Cloud (VPC) with public and private subnets.
-Although it took just over a day to build, it was built with security in mind. 
+This is a sample AWS build using Terraform! </br>
+The final product is a Virtual Private Cloud (VPC) with public and private subnets. </br>
+Although it took just over a day to build, it was built with security in mind. </br>
 The S3 bucket has been encrypted, and no secrets are stored in plaintext or as variables. 
 Secrets are managed in AWS Secrets Manager, which must be accessed from the AWS Management Console.
 
