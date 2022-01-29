@@ -43,6 +43,11 @@ variable "pub_http_sg" {
   description = "Imports the Public HTTP Security Group"
 }
 
+variable "pri_http_sg" {
+  type        = string
+  description = "Imports the Private HTTP Security Group"
+}
+
 variable "alb_target_group_arn" {
   description = "Imports the ARN of the ALB Target Group from VPC"
 }

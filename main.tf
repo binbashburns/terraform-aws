@@ -21,6 +21,7 @@ module "ec2" {
   sub4_id              = module.vpc.sub4
   pub_ssh_sg           = module.vpc.pub_ssh_sg
   pub_http_sg          = module.vpc.pub_http_sg
+  pri_http_sg          = module.vpc.pri_http_sg
   alb_target_group_arn = module.vpc.alb_target_group_arn
   key_name             = module.sm.key_name
 }

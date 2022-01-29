@@ -18,6 +18,10 @@ output "pub_http_sg" {
   value = aws_security_group.pub_http_sg.id
 }
 
+output "pri_http_sg" {
+  value = aws_security_group.pri_http_sg.id
+}
+
 output "alb_target_group_arn" {
   value = aws_lb_target_group.http_tg.arn
 }

@@ -19,7 +19,7 @@ resource "aws_launch_configuration" "rhel_lc" {
   name            = "${var.base_name}_rhel_lc"
   image_id        = var.ami
   instance_type   = "t2.micro"
-  security_groups = [var.pub_http_sg]
+  security_groups = [var.pri_http_sg]
   root_block_device {
     volume_size = 20
   }
