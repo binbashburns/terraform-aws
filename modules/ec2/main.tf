@@ -1,5 +1,3 @@
-# --- ./modules/ec2/main.tf --- 
-
 # Provides Standalone RHEL instance, which is managed via SSH
 resource "aws_instance" "rhel_ec2" {
   ami                         = var.ami
@@ -22,11 +20,9 @@ resource "aws_launch_configuration" "rhel_lc" {
   image_id        = var.ami
   instance_type   = "t2.micro"
   security_groups = [var.pub_http_sg]
-
   root_block_device {
     volume_size = 20
   }
-
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
@@ -36,7 +32,6 @@ resource "aws_launch_configuration" "rhel_lc" {
     systemctl start httpd
     echo "<h1>Your website has been built successfully.</h1>" > /var/www/html/index.html
     EOF
-
   lifecycle {
     create_before_destroy = true
   }
@@ -50,9 +45,8 @@ resource "aws_autoscaling_group" "rhel_asg" {
   max_size             = 6
   desired_capacity     = 2
   health_check_type    = "EC2"
-  vpc_zone_identifier  = [var.sub3_id,var.sub4_id]
+  vpc_zone_identifier  = [var.sub3_id, var.sub4_id]
   target_group_arns    = [var.alb_target_group_arn]
-
   lifecycle {
     create_before_destroy = true
   }

@@ -1,23 +1,33 @@
-# terraform-aws
-This is a sample AWS build using Terraform!
+# Terraform AWS Demo
+## About
+This is a sample AWS build using Terraform! 
+The final product is a Virtual Private Cloud (VPC) with public and private subnets.
+Although it took just over a day to build, it was built with security in mind. 
+The S3 bucket has been encrypted, and no secrets are stored in plaintext or as variables. 
+Secrets are managed in AWS Secrets Manager, which must be accessed from the AWS Management Console.
 
-## To do list:
-<!--- Spread ASG instances across multiple availability zones-->
-- Add runtime output of URL to access Apache instance
-- Try to access the Apache Web Server with a browser
-- Ensure headers are uniform on all config files
-- Update to Network Diagram
-- Add Network Diagram to Git repo
-- Add Resources to Resource List
+## Deliverables
+Once this infrastructure is deployed, two values are provided so you can test it out:
+1. IP Address to access a RedHat instance, which is deployed in the public subnet.
+2. DNS address to access an Apache web server, which is deployed in the private subnet.
+
+## Network Diagram
+There is an accompanying Network Diagram in the main folder. Be sure to check it out. 
+It definitely helps to visualize the different resources, and have a sense of their placement within the VPC.
 
 ## Resources:
-- 1 VPC
-- 4 Subnets (Two private, two public)
-- 1 Standalone EC2 Instance (Public)
-- 1 Auto Scaling Group (Private)
-- 1 Application Load Balancer (Attached to ASG)
-- 2 Security Groups
-- 1 S3 Bucket
+- VPC (in US-East-1)
+- Subnets (Two private, two public)
+- Route Tables (One for private subnet, one public)
+- NAT Gateway
+- Internet Gateway
+- Standalone EC2 Instance (Public)
+- Auto Scaling Group (Spanning both Private Subnets)
+- Application Load Balancer (Attached to Auto Scaling Group)
+- Security Groups
+- S3 Bucket
+- KMS
+- Secrets Manager
 
 ## References used:
 https://aws.amazon.com/architecture/reference-architecture-diagrams/

@@ -1,5 +1,3 @@
-# --- ./modules/s3/variables.tf --- 
-
 variable "description" {
   default     = "ssh key"
   description = "Description of secret"

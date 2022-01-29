@@ -1,5 +1,3 @@
-# --- ./modules/vpc/variables.tf --- 
-
 variable "base_name" {
   type        = string
   description = "The base name for the VPC"

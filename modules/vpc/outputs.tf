@@ -1,5 +1,3 @@
-# --- ./modules/vpc/outputs.tf --- 
-
 output "sub2" {
   value = aws_subnet.sub2.id
 }
@@ -25,5 +23,5 @@ output "alb_target_group_arn" {
 }
 
 output "alb_dns_name" {
-    value = aws_lb.http_alb.dns_name
+  value = aws_lb.http_alb.dns_name
 }

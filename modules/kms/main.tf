@@ -1,5 +1,3 @@
-# --- ./modules/kms/main.tf --- 
-
 resource "aws_kms_key" "terraform-bucket-key" {
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10

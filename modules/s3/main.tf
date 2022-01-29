@@ -1,5 +1,3 @@
-# --- ./modules/s3/main.tf --- 
-
 # Imports random string resource
 resource "random_string" "random" {
   length  = 4
@@ -12,7 +10,6 @@ resource "aws_s3_bucket" "s3" {
   bucket        = join("-", ["${var.base_name}-s3", random_string.random.result])
   acl           = "private"
   force_destroy = true
-
   versioning {
     enabled = true
   }
@@ -29,7 +26,6 @@ resource "aws_s3_bucket" "s3" {
   lifecycle_rule {
     id      = "img"
     enabled = true
-
     transition {
       days          = 90
       storage_class = "GLACIER"
@@ -39,7 +35,6 @@ resource "aws_s3_bucket" "s3" {
   lifecycle_rule {
     id      = "log"
     enabled = true
-
     expiration {
       days = 90
     }
