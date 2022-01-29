@@ -8,8 +8,10 @@ Secrets are managed in AWS Secrets Manager, which must be accessed from the AWS 
 
 ## Deliverables
 Once this infrastructure is deployed, two values are provided so you can test it out:</br>
-1. IP Address to access a RedHat instance, which is deployed in the public subnet.
+1. IP Address to access a RedHat instance, which is deployed in the public subnet. Your SSH key is in Secrets Manager.
 2. DNS address to access an Apache web server, which is deployed in the private subnet.
+**NOTE**: the Apache Web Server will show a `502 Bad Gateway` message for about 15 minutes or so.</br>
+Try waiting about 10 minutes, and refresh the page.
 
 ## Network Diagram
 There is an accompanying Network Diagram in the main folder. Be sure to check it out. </br>
